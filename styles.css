@@ -1,0 +1,97 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html{
+    background-color: #F4F4F9;
+}
+
+nav{
+    background-color: #586F7C;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    & a{
+        width: 60px;
+        height: 50px;
+        background-color: #F4F4F9;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        border-radius: 50px;
+        border: none;
+        margin-right: 5%;
+    }
+}
+
+main{
+    display: flex;
+    justify-content: center;    
+    margin-top: 3%;
+}
+
+#formCriarJogo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 60vh;
+    border: 1px solid #586F7C;
+    box-shadow: 2px 4px 5px  gray;
+    border-radius: 20px;
+}
+
+#containerDados{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+    width: 50%;
+    height: 250px;
+
+    & button{
+        width: 30%;
+        height: 40px;
+        align-self: end;
+        padding: 5px;
+        border-radius: 20px;
+        border: none;
+        border: 1px solid gray;
+    }
+
+    #dataJogo{
+        width: 40%;
+        text-align: center;
+    }
+
+    #nomeJogo{
+        width: 60%;
+    }
+}
+
+#containerImg{
+    width: 250px;
+    height: 250px;
+    background-color: #B8DBD9;
+}
+
+#containerNota{
+    h1{
+        font-size: 15px;
+    }
+}
+
+#capaJogo{
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    padding: 10px;
+}

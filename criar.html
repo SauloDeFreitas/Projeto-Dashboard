@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <nav id="navCriar">
+        <a href="criar.html">+</a>
+        <a href="vizualizar.html">Vizu</a>
+    </nav>
+    <main>
+        <form id="formCriarJogo">
+            <div id="containerImg">
+                <img id="capaJogo">
+            </div>
+            <div id="containerDados">
+                <label for="nomeJogo">Nome</label>
+                <input id="nomeJogo" type="text" placeholder="Digite o nome do jogo">
+                <div id="containerNota">
+                    <h1>Nota</h1>
+                    <label for="nota1">1</label>
+                    <input id="nota1" name="notaJogo" type="radio">
+                    <label for="nota2">2</label>
+                    <input id="nota2" name="notaJogo" type="radio">
+                    <label for="nota3">3</label>
+                    <input id="nota3" name="notaJogo" type="radio">
+                    <label for="nota4">4</label>
+                    <input id="nota4" name="notaJogo" type="radio">
+                    <label for="nota5">5</label>
+                    <input id="nota5" name="notaJogo" type="radio">
+                </div>
+                <label for="dataJogo">Data Jogada</label>
+                <input id="dataJogo" type="date">
+                <button type="submit">Criar</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
