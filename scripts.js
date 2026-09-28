@@ -29,9 +29,10 @@ async function procurarImagem(){
     consultaImagem()
 
     for(let i = 0; i < quantidadeImgs; i++){
-        const valorDigitado = nomeJogo.value + reconhecerExtensao(i)
+        const valorDigitado = (nomeJogo.value + reconhecerExtensao(i)).replace(/\s/g,"").toLocaleLowerCase()
+
         //Verificar se o valor digitado é igual a algum nome de arquivo existente
-        if((valorDigitado) === nomeImgs[i]){
+        if(valorDigitado === nomeImgs[i].replace(/\s/g,"").toLocaleLowerCase()){
             capaImg.src = (dirImgsJogos + nomeImgs[i]) 
             return
         }
@@ -53,19 +54,19 @@ async function mostrarJogos(){
 
             const conteinerCard = document.createElement('div')
             conteinerCard.className = 'containerCard'
-            const efeitoHover = document.createElement('div')
-            
-
             containerContudo.appendChild(conteinerCard)
 
             const img = document.createElement('img')
             img.src = dirImgsJogos + jogos[i].nome + jogos[i].extensao
-            
+
 
             const a = document.createElement('a')
-            conteinerCard.appendChild(efeitoHover)
+            const data = document.createElement('h1')
+            data.textContent = jogos[i].data
+            conteinerCard.appendChild(data)
             conteinerCard.appendChild(img)
             conteinerCard.appendChild(a)
+            
         }
     }catch(erro){
         console.log("Não foi possível mostrar os jogos: ", erro)
@@ -77,33 +78,39 @@ async function cadastrarJogo(){
     const nomeJogo = document.getElementById('nomeJogo')
     const notaJogo = document.querySelector('input[name ="notaJogo"]:checked')
     const dataJogo = document.getElementById('dataJogo')
+    const formulario = document.getElementById("formCriarJogo")
 
-    const requisicao = await fetch(url + '/extensao', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json" 
-        },
-        body : JSON.stringify({pasta: dirImgsJogos, nome : nomeJogo.value})
-    })
-    const resultado = await requisicao.json()
-    
-    const jogo  = {
-        nome : nomeJogo.value,
-        extensao : resultado.extensao,
-        nota : notaJogo.value,
-        data : dataJogo.value
-    }
-
-    try{
-        const requisicao = await fetch(url + '/jogo/cadastrar', { 
+    if(formulario.reportValidity()){
+        const requisicao = await fetch(url + '/extensao', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json" 
             },
-            body : JSON.stringify(jogo)
+            body : JSON.stringify({pasta: dirImgsJogos, nome : nomeJogo.value.replace(/\s/g,"").toLocaleLowerCase()})
         })
-    }catch(erro){
-        console.log('Não foi possível cadastrar devido :', erro)
+        const resultado = await requisicao.json()
+        
+        const jogo  = {
+            nome : nomeJogo.value.replace(/\s/g,"").toLocaleLowerCase(),
+            extensao : resultado.extensao,
+            nota : notaJogo.value,
+            data : dataJogo.value
+        }
+
+        try{
+            const requisicao = await fetch(url + '/jogo/cadastrar', { 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json" 
+                },
+                body : JSON.stringify(jogo)
+            })
+        }catch(erro){
+            console.log('Não foi possível cadastrar devido :', erro)
+        }
+    }
+    else{
+        alert('Preecha todos os campos!')
     }
 
 }

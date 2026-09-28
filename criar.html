@@ -9,8 +9,11 @@
 </head>
 <body>
     <nav id="navCriar">
-        <a href="criar.html">+</a>
-        <a href="vizualizar.html">Vizu</a>
+        <h1>Minha Biblioteca NES</h1>
+        <div id="botoesNav">
+            <a href="criar.html">+</a>
+            <a href="vizualizar.html">Vizu</a>
+        </div>
     </nav>
     <main id="mainCriarJogo">
         <form id="formCriarJogo">
@@ -19,24 +22,29 @@
             </div>
             <div id="containerDados">
                 <label for="nomeJogo">Nome</label>
-                <input oninput="procurarImagem()" id="nomeJogo" type="text" placeholder="Digite o nome do jogo">
+                <input required oninput="procurarImagem()" id="nomeJogo" type="text" placeholder="Digite o nome do jogo">
                 <div id="containerNota">
                     <h1>Nota</h1>
-                    <label for="nota1">1</label>
-                    <input id="nota1" name="notaJogo" type="radio" value="1">
-                    <label for="nota2">2</label>
-                    <input id="nota2" name="notaJogo" type="radio" value="2">
-                    <label for="nota3">3</label>
-                    <input id="nota3" name="notaJogo" type="radio" value="3">
-                    <label for="nota4">4</label>
-                    <input id="nota4" name="notaJogo" type="radio" value="4">
-                    <label for="nota5">5</label>
-                    <input id="nota5" name="notaJogo" type="radio" value="5">
+                    <input required id="nota1" name="notaJogo" type="radio" value="1">
+                    <label for="nota1"><img src="imgs/estrela.svg"></label>
+                    
+                    <input required id="nota2" name="notaJogo" type="radio" value="2">
+                    <label for="nota2"><img src="imgs/estrela.svg"></label>
+                
+                    <input required id="nota3" name="notaJogo" type="radio" value="3">
+                    <label for="nota3"><img src="imgs/estrela.svg"></label>
+
+                    <input required id="nota4" name="notaJogo" type="radio" value="4">
+                    <label for="nota4"><img src="imgs/estrela.svg"></label>
+
+                    <input required id="nota5" name="notaJogo" type="radio" value="5">
+                    <label for="nota5"><img src="imgs/estrela.svg"></label>
                 </div>
                 <label for="dataJogo">Data Jogada</label>
-                <input id="dataJogo" type="date">
+                <input required id="dataJogo" type="date">
                 <button type="button" onclick="cadastrarJogo()">Criar</button>
             </div>
+            <div id="bordaFormCriacao"></div>
         </form>
     </main>
 </body>
